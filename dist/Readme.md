@@ -1,5 +1,5 @@
 
-# Medium markdown exporter
+# Medium markdown exporter (under development)
 Export your medium post to markdown
 
 ## Getting started
