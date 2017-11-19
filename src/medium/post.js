@@ -7,7 +7,7 @@ class Post {
         this.id = id
         this.userName = userName
         this.mediumUrl = mediumUrl
-        this.content = {}
+        this.content = null
     }
 
     getPostUrl() {
@@ -20,6 +20,7 @@ class Post {
 
     // Get content with medium json representation
     getContent() {
+        if (this.content) return new Promise(resolve => resolve(this.content))
         return axios
             .get(this.getPostUrl(), {
                 transformResponse: mapMediumData
