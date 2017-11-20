@@ -4,9 +4,11 @@
   "description": "Export your posts from medium to markdown",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist/ && babel src -d dist --ignore Readme.md",
     "start": "npm run build && node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf dist/ && babel src -d dist --ignore Readme.md",
+    "build:watch": "rimraf dist/ && babel src -d dist --ignore Readme.md --watch",
+    "test": "mocha -c -R spec --recursive 'tests' --require babel-core/register --check-leak",
+    "test:watch": "mocha -w -c -R spec --recursive 'tests' --require babel-core/register --check-leaks"
   },
   "author": "Juan P. (@qjuanp - qjuanp@gmail.com)",
   "license": "GNU GPLv3",
@@ -14,6 +16,10 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^4.0.1",
+    "moxios": "^0.4.0",
     "rimraf": "^2.6.2"
   },
   "dependencies": {

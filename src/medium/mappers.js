@@ -3,7 +3,9 @@ export function mapProfile(response) {
 }
 
 export function mapMediumData(response) {
-    return JSON.parse(response.replace('])}while(1);</x>', ''))
+    return response && response.length > 0 ?
+        JSON.parse(response.replace('])}while(1);</x>', '')) :
+        {}
 }
 
 export function mapPosts(response) {

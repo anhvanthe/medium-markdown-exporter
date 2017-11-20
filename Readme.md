@@ -34,7 +34,7 @@ This options were made only for testing purposes, bu who knows? could be usedful
     - `npm start --user qjuanp -id a6a44bbd3ac6`
 
 * ~~To generate useful tests I made a way to export post to json~~
-    - `npm start -f json -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6`
+    - `npm start -F json -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6`
     - `npm start --format json --user qjuanp -id a6a44bbd3ac6`
 
 ## Build with

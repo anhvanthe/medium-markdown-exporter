@@ -1,0 +1,591 @@
+{
+    "id": "a6a44bbd3ac6",
+    "versionId": "6389c0507708",
+    "creatorId": "7367fbed8fdd",
+    "homeCollectionId": "",
+    "title": "Renombrar objetos y Namespaces en C#",
+    "detectedLanguage": "es",
+    "latestVersion": "6389c0507708",
+    "latestPublishedVersion": "6389c0507708",
+    "hasUnpublishedEdits": false,
+    "latestRev": 171,
+    "createdAt": 1454388281379,
+    "updatedAt": 1511053976877,
+    "acceptedAt": 0,
+    "firstPublishedAt": 1415817350000,
+    "latestPublishedAt": 1511053974353,
+    "vote": false,
+    "experimentalCss": "",
+    "displayAuthor": "",
+    "content": {
+        "subtitle": "Esta es una de esas herramientas “medio ocultas” (o bueno, yo por lo menos me tarde en encontrarla) en el lenguaje C# que les va quitar…",
+        "bodyModel": {
+            "paragraphs": [
+                {
+                    "name": "56c4",
+                    "type": 3,
+                    "text": "Renombrar objetos y Namespaces en C#",
+                    "markups": []
+                },
+                {
+                    "name": "7fa6",
+                    "type": 1,
+                    "text": "Esta es una de esas herramientas “medio ocultas” (o bueno, yo por lo menos me tarde en encontrarla) en el lenguaje C# que les va quitar muchos dolores de cabeza, o bueno, se los comparto porque a mí me ha quitado varios dolores de cabeza.",
+                    "markups": []
+                },
+                {
+                    "name": "e58d",
+                    "type": 13,
+                    "text": "Directiva “alias”, cómo se usa?",
+                    "markups": []
+                },
+                {
+                    "name": "5ed3",
+                    "type": 1,
+                    "text": "Esta directiva en C# se usan con la instrucción o palabra clave using para renombrar un namespace completo:",
+                    "markups": [
+                        {
+                            "type": 3,
+                            "start": 5,
+                            "end": 14,
+                            "href": "http://msdn.microsoft.com/en-us/library/aa664765.aspx",
+                            "title": "Using alias directives",
+                            "rel": "",
+                            "anchorType": 0
+                        },
+                        {
+                            "type": 1,
+                            "start": 64,
+                            "end": 69
+                        },
+                        {
+                            "type": 1,
+                            "start": 88,
+                            "end": 97
+                        }
+                    ]
+                },
+                {
+                    "name": "9895",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "e6249f18d1a1162b0ee00f0e6190ed2d"
+                    }
+                },
+                {
+                    "name": "2849",
+                    "type": 1,
+                    "text": "O inclusive renombrar objetos específicos:",
+                    "markups": []
+                },
+                {
+                    "name": "2b30",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "1ce5c90734f6e3720b7d3063d5f7e3b6"
+                    }
+                },
+                {
+                    "name": "736f",
+                    "type": 1,
+                    "text": "Hasta acá nada raro, es más, ustedes podrán decir: “Para qué?”",
+                    "markups": []
+                },
+                {
+                    "name": "0acc",
+                    "type": 13,
+                    "text": "En que escenarios se puede utilizar?",
+                    "markups": []
+                },
+                {
+                    "name": "83b0",
+                    "type": 1,
+                    "text": "Tengo un par de escenarios en los que he utilizado esta directiva y que me ha quitado varios problemas de encima, espero que ustedes nos compartan otros escenarios en los que lo hayan utilizado.",
+                    "markups": []
+                },
+                {
+                    "name": "c0af",
+                    "type": 3,
+                    "text": "Ambigüedades",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 0,
+                            "end": 12
+                        }
+                    ]
+                },
+                {
+                    "name": "9399",
+                    "type": 1,
+                    "text": "Déjenme hacerles primero una pregunta muy sencilla:",
+                    "markups": []
+                },
+                {
+                    "name": "9450",
+                    "type": 6,
+                    "text": "En cuantos proyectos han trabajado que dentro de la solución existan una de las siguientes clases: User, Process, Task, Profile… ?",
+                    "markups": [
+                        {
+                            "type": 2,
+                            "start": 0,
+                            "end": 130
+                        }
+                    ]
+                },
+                {
+                    "name": "c884",
+                    "type": 1,
+                    "text": "Si la respuesta a la pregunta anterior cumple con la siguiente sentencia: projectNumber >= 0, déjenme decirles que por lo menos una vez (y de ahí para arriba todas las que quieran) se han enfrentado con problemas de ambigüedad, ya que el compilador no es capaz de diferenciar entre:",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 74,
+                            "end": 92
+                        }
+                    ]
+                },
+                {
+                    "name": "00db",
+                    "type": 9,
+                    "text": "System.Threading.Tasks.Task, Your.Own.Implementation.Task",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 23,
+                            "end": 27
+                        },
+                        {
+                            "type": 1,
+                            "start": 53,
+                            "end": 57
+                        }
+                    ]
+                },
+                {
+                    "name": "4272",
+                    "type": 9,
+                    "text": "Microsoft.SqlServer.Management.Smo.User, Microsoft.Office.InfoPath.User, Yout.Own.Implementation.User",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 35,
+                            "end": 39
+                        },
+                        {
+                            "type": 1,
+                            "start": 67,
+                            "end": 71
+                        },
+                        {
+                            "type": 1,
+                            "start": 97,
+                            "end": 101
+                        }
+                    ]
+                },
+                {
+                    "name": "3938",
+                    "type": 9,
+                    "text": "System.Diagnostics.Process, Yout.Own.Implementation.Process",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 19,
+                            "end": 26
+                        },
+                        {
+                            "type": 1,
+                            "start": 52,
+                            "end": 59
+                        }
+                    ]
+                },
+                {
+                    "name": "9256",
+                    "type": 13,
+                    "text": "Solución tradicional",
+                    "markups": []
+                },
+                {
+                    "name": "5124",
+                    "type": 1,
+                    "text": "La primera solución, la que utilizamos la mayoría de desarrolladores es: Incluir el nombre completo de la clase (Namespace + Nombre de la clase):",
+                    "markups": []
+                },
+                {
+                    "name": "9184",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "d80d91a6e0ef2f28bc4c9f1ee4bc323f"
+                    }
+                },
+                {
+                    "name": "726e",
+                    "type": 1,
+                    "text": "Esto rompe con la estética y la fácil lectura del código (si, para mí los archivos .cs son poemas, música… Una expresión artística de desarrolladores para desarrolladores).",
+                    "markups": []
+                },
+                {
+                    "name": "4732",
+                    "type": 13,
+                    "text": "Solución con la directiva “alias”",
+                    "markups": []
+                },
+                {
+                    "name": "c19d",
+                    "type": 1,
+                    "text": "Haciendo el uso de esta directiva, basta con renombrar el namespace que contiene la clase en cuestión e indicar en nuestro código la ruta completa a la clase (reducida desde el using)",
+                    "markups": []
+                },
+                {
+                    "name": "c9df",
+                    "type": 1,
+                    "text": "También pueden definir la variable como un tipo de dato implícito para reducir la sentencia a:",
+                    "markups": []
+                },
+                {
+                    "name": "4f23",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "97c0e8e6a380e918b1cb34ad0bfb212f"
+                    }
+                },
+                {
+                    "name": "6448",
+                    "type": 3,
+                    "text": "Definición y uso de tipos de datos genéricos",
+                    "markups": []
+                },
+                {
+                    "name": "56fb",
+                    "type": 1,
+                    "text": "En C# podemos definir una matriz con objetos pre-definidos en la plataforma (No es que sea la mejor manera, pero es práctico para ilustrar):",
+                    "markups": []
+                },
+                {
+                    "name": "bceb",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "e0c516ec411e41aeda619594f3ca6d74"
+                    }
+                },
+                {
+                    "name": "9c96",
+                    "type": 1,
+                    "text": "O también si ustedes tienen sus propias definiciones de tipos de datos como la siguiente:",
+                    "markups": []
+                },
+                {
+                    "name": "fb8d",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "4471ede322dc6f3199508d3aec0ad954"
+                    }
+                },
+                {
+                    "name": "95fd",
+                    "type": 1,
+                    "text": "El cual pueden usar:",
+                    "markups": []
+                },
+                {
+                    "name": "b634",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "ba87d452ed52d6d7113eaa80aec9872a"
+                    }
+                },
+                {
+                    "name": "e2fc",
+                    "type": 1,
+                    "text": "Esto hace que el código sea difícil de leer!",
+                    "markups": []
+                },
+                {
+                    "name": "6259",
+                    "type": 6,
+                    "text": "Si tienen un uso extremo de genéricos como el que les acabo de mostrar, lo mejor es que revisen el diseño de su aplicación, esto es un indicio de que algo en el diseño está fallando.",
+                    "markups": [
+                        {
+                            "type": 2,
+                            "start": 0,
+                            "end": 182
+                        }
+                    ]
+                },
+                {
+                    "name": "2980",
+                    "type": 13,
+                    "text": "Simplificación con la directiva “alias”",
+                    "markups": []
+                },
+                {
+                    "name": "20ce",
+                    "type": 1,
+                    "text": "Acá es donde llega a salvar el día el uso de los “alias”, o mejor aún, a mantener la armonía del código que estamos escribiendo.",
+                    "markups": []
+                },
+                {
+                    "name": "f5ec",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "b2a16dd0aed1320f911afbf665daa54b"
+                    }
+                },
+                {
+                    "name": "9cb9",
+                    "type": 1,
+                    "text": "En este ejemplo, no modificamos la definición inicial de nuestra clase genérica, simplemente desde el using estamos re-definiendo el nombre de la clase entera, con sus respectivos tipos de datos específicos como parámetros, para que sea mucho más legible nuestro código.",
+                    "markups": [
+                        {
+                            "type": 1,
+                            "start": 102,
+                            "end": 107
+                        }
+                    ]
+                },
+                {
+                    "name": "39bb",
+                    "type": 6,
+                    "text": "Esto también lo podemos conseguir escribiendo una nueva clase que herede de nuestro tipo de dato genérico, especificando los tipos de datos como parámetros.",
+                    "markups": [
+                        {
+                            "type": 2,
+                            "start": 0,
+                            "end": 156
+                        }
+                    ]
+                },
+                {
+                    "name": "18ee",
+                    "type": 11,
+                    "text": "",
+                    "markups": [],
+                    "layout": 1,
+                    "iframe": {
+                        "mediaResourceId": "d8dba47ecfa92d3724a9a35fbb5304b9"
+                    }
+                },
+                {
+                    "name": "105c",
+                    "type": 3,
+                    "text": "Conclusión",
+                    "markups": []
+                },
+                {
+                    "name": "9caa",
+                    "type": 1,
+                    "text": "Como vimos, los alias nos ayudan con ambigüedades y simplificación del código. Recuerden aclarar a su equipo de desarrollo las reglas para usar este tipo de re-nombramientos para no generar confusiones, por ejemplo, una persona podría perder buen tiempo buscando en la solución el archivo MatrixContent.cs.",
+                    "markups": []
+                },
+                {
+                    "name": "179e",
+                    "type": 1,
+                    "text": "Originally published at lifeandcode.ghost.io on November 12, 2014.",
+                    "markups": [
+                        {
+                            "type": 3,
+                            "start": 24,
+                            "end": 44,
+                            "href": "http://lifeandcode.ghost.io/namespacealias-csharp/",
+                            "title": "",
+                            "rel": "",
+                            "anchorType": 0
+                        },
+                        {
+                            "type": 2,
+                            "start": 0,
+                            "end": 66
+                        }
+                    ]
+                }
+            ],
+            "sections": [
+                {
+                    "name": "fdee",
+                    "startIndex": 0
+                },
+                {
+                    "name": "647f",
+                    "startIndex": 42
+                }
+            ]
+        },
+        "postDisplay": {
+            "coverless": true
+        }
+    },
+    "virtuals": {
+        "allowNotes": true,
+        "previewImage": {
+            "imageId": "",
+            "filter": "",
+            "backgroundSize": "",
+            "originalWidth": 0,
+            "originalHeight": 0,
+            "strategy": "resample",
+            "height": 0,
+            "width": 0
+        },
+        "wordCount": 570,
+        "imageCount": 0,
+        "readingTime": 2.150943396226415,
+        "subtitle": "Esta es una de esas herramientas “medio ocultas” (o bueno, yo por lo menos me tarde en encontrarla) en el lenguaje C# que les va quitar…",
+        "usersBySocialRecommends": [],
+        "recommends": 0,
+        "isBookmarked": false,
+        "tags": [
+            {
+                "slug": "csharp",
+                "name": "Csharp",
+                "postCount": 1211,
+                "virtuals": {
+                    "isFollowing": false
+                },
+                "metadata": {
+                    "followerCount": 819,
+                    "postCount": 1211,
+                    "coverImage": {
+                        "id": "1*5WzlrdAGGGSKqJBesbl8cA.png",
+                        "originalWidth": 1114,
+                        "originalHeight": 609
+                    }
+                },
+                "type": "Tag"
+            },
+            {
+                "slug": "code",
+                "name": "Code",
+                "postCount": 3645,
+                "virtuals": {
+                    "isFollowing": false
+                },
+                "metadata": {
+                    "followerCount": 1139,
+                    "postCount": 3645,
+                    "coverImage": {
+                        "id": "1*BS5oFZ7LRlnmDob2ETuXyg.jpeg",
+                        "originalWidth": 850,
+                        "originalHeight": 406,
+                        "isFeatured": true
+                    }
+                },
+                "type": "Tag"
+            }
+        ],
+        "socialRecommendsCount": 0,
+        "responsesCreatedCount": 0,
+        "links": {
+            "entries": [
+                {
+                    "url": "http://lifeandcode.ghost.io/namespacealias-csharp/",
+                    "alts": [],
+                    "httpStatus": 200
+                },
+                {
+                    "url": "http://msdn.microsoft.com/en-us/library/aa664765.aspx",
+                    "alts": [],
+                    "httpStatus": 200
+                }
+            ],
+            "version": "0.3",
+            "generatedAt": 1511053976690
+        },
+        "isLockedPreviewOnly": false,
+        "takeoverId": "",
+        "metaDescription": "",
+        "totalClapCount": 0,
+        "sectionCount": 2
+    },
+    "coverless": true,
+    "slug": "renombrar-objetos-y-namespaces-en-c",
+    "translationSourcePostId": "",
+    "translationSourceCreatorId": "",
+    "isApprovedTranslation": false,
+    "inResponseToPostId": "",
+    "inResponseToRemovedAt": 0,
+    "isTitleSynthesized": true,
+    "allowResponses": true,
+    "importedUrl": "http://lifeandcode.ghost.io/namespacealias-csharp/",
+    "importedPublishedAt": 1415817350000,
+    "visibility": 0,
+    "uniqueSlug": "renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6",
+    "previewContent": {
+        "bodyModel": {
+            "paragraphs": [
+                {
+                    "name": "56c4",
+                    "type": 3,
+                    "text": "Renombrar objetos y Namespaces en C#",
+                    "markups": [],
+                    "alignment": 1
+                },
+                {
+                    "name": "7fa6",
+                    "type": 1,
+                    "text": "Esta es una de esas herramientas “medio ocultas” (o bueno, yo por lo menos me tarde en encontrarla) en el lenguaje C# que les va quitar muchos dolores de cabeza, o bueno, se los comparto porque a mí me ha quitado varios dolores de cabeza.",
+                    "markups": [],
+                    "alignment": 1
+                }
+            ],
+            "sections": [
+                {
+                    "startIndex": 0
+                }
+            ]
+        },
+        "isFullContent": false
+    },
+    "license": 0,
+    "inResponseToMediaResourceId": "",
+    "canonicalUrl": "https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6",
+    "approvedHomeCollectionId": "",
+    "newsletterId": "",
+    "webCanonicalUrl": "http://lifeandcode.ghost.io/namespacealias-csharp/",
+    "mediumUrl": "https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6",
+    "migrationId": "",
+    "notifyFollowers": true,
+    "notifyTwitter": false,
+    "isSponsored": false,
+    "isRequestToPubDisabled": false,
+    "notifyFacebook": false,
+    "responseHiddenOnParentPostAt": 0,
+    "isSeries": false,
+    "isSubscriptionLocked": false,
+    "seriesLastAppendedAt": 0,
+    "audioVersionDurationSec": 0,
+    "sequenceId": "",
+    "isNsfw": false,
+    "isEligibleForRevenue": false,
+    "isBlockedFromHightower": false,
+    "deletedAt": 0,
+    "lockedPostSource": 0,
+    "hightowerMinimumGuaranteeStartsAt": 0,
+    "hightowerMinimumGuaranteeEndsAt": 0,
+    "type": "Post"
+}
