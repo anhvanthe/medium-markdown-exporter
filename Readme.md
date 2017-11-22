@@ -2,7 +2,7 @@
 # Medium markdown exporter (under development)
 Export your medium post to markdown
 
-## Getting 4ed
+## Getting Started
 These instructions will get you a copy of the project up and running on your local machine
 
 ### Prerequisites
@@ -15,27 +15,27 @@ To get all post from one user just
 ## Options
 
 * ~~Get all posts from user~~
-    - `npm start -u qjuanp`
-    - `npm start --user qjuanp`
+    - [ ] `npm start -u qjuanp`
+    - [ ] `npm start --user qjuanp`
 
 * ~~Get one post using its url, markdown will be saved on./exports/<title-spinal-case>.md~~
-    - `npm start -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6` 
-    - `npm start --post-url https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6` 
+    - [ ] `npm start -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6` 
+    - [ ] `npm start --post-url https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6` 
 
 * ~~Get all posts from user, markdown will be saved on  whereever-you-want/, default folder to store exported markdown is .exports/~~
-    - `npm start -u qjuanp -d whereever-you-want/`
-    - `npm start --user qjuanp --directory whereever-you-want/`
+    - [ ] `npm start -u qjuanp -d whereever-you-want/`
+    - [ ] `npm start --user qjuanp --directory whereever-you-want/`
 
 ### Other options
 This options were made only for testing purposes, bu who knows? could be usedful for you too
 
 * ~~Get one post, you will need user and post id together~~
-    - `npm start -u qjuanp -id a6a44bbd3ac6`
-    - `npm start --user qjuanp -id a6a44bbd3ac6`
+    - [ ] `npm start -u qjuanp -id a6a44bbd3ac6`
+    - [ ] `npm start --user qjuanp -id a6a44bbd3ac6`
 
-* ~~To generate useful tests I made a way to export post to json~~
-    - `npm start -F json -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6`
-    - `npm start --format json --user qjuanp -id a6a44bbd3ac6`
+* To generate useful tests I made a way to export post to json
+    - [x] `npm start -F json -p https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6`
+    - [ ] `npm start --format json --user qjuanp -id a6a44bbd3ac6`
 
 ## Build with
 - [Axios][axios] for http requests
