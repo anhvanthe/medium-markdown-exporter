@@ -7,19 +7,20 @@
     "start": "npm run build && node dist/index.js",
     "build": "rimraf dist/ && babel src -d dist --ignore Readme.md",
     "build:watch": "rimraf dist/ && babel src -d dist --ignore Readme.md --watch",
-    "test": "mocha -c -R spec --recursive 'tests' --require babel-core/register --check-leak",
-    "test:watch": "mocha -w -c -R spec --recursive 'tests' --require babel-core/register --check-leaks"
+    "test": "mocha -c -R spec --recursive 'tests' --require babel-polyfill --require babel-core/register --require babel-polyfill --check-leak",
+    "test:watch": "mocha -w -c -R spec --recursive 'tests' --require babel-polyfill --require babel-core/register --check-leaks"
   },
   "author": "Juan P. (@qjuanp - qjuanp@gmail.com)",
   "license": "GNU GPLv3",
   "devDependencies": {
+    "axios-mock-adapter": "^1.10.0",
     "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "mocha": "^4.0.1",
-    "moxios": "^0.4.0",
     "rimraf": "^2.6.2"
   },
   "dependencies": {

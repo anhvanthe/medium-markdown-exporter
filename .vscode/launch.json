@@ -13,6 +13,7 @@
                 "--timeout",
                 "999999",
                 "--colors",
+                "--require", "babel-polyfill",
                 "--require","babel-core/register",
                 "--recursive",
                 "${workspaceFolder}\\tests"

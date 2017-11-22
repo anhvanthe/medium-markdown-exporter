@@ -1,6 +1,7 @@
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
-import moxios from 'moxios'
+import axios from 'axios'
+import MockAdapter from 'axios-mock-adapter'
 import { readFile } from 'fs'
 import { Post } from '../../src/medium/post'
 
@@ -10,12 +11,16 @@ const expect = chai.expect
 
 describe('Medium Post representation', () => {
 
-    beforeEach(() => moxios.install())
-
-    afterEach(() => moxios.uninstall())
-
-
     describe('Expected scenarios', () => {
+        let mediumPostJson;
+
+        beforeEach(() => {
+            readFile('tests/data/renombrar-objetos-y-namespaces-en-c.json',
+                (err, data) => {
+                    if (err) throw err
+                    mediumPostJson = JSON.parse(data)
+                })
+        })
 
         it('url: Medium url', () => {
             const postUrl = 'https://medium.com/post',
@@ -34,23 +39,32 @@ describe('Medium Post representation', () => {
                 .to.equal('https://medium.com/@qjuanp/validid')
         })
 
-        it('load: Load medium post json information', () => {
+        it('load: Load medium post json information', async () => {
             const postUrl = 'https://medium.com/post',
-                post = new Post({ mediumUrl: postUrl })
+                post = new Post({ mediumUrl: postUrl }),
+                mock = new MockAdapter(axios)
 
-            moxios.stubRequest(postUrl, {
-                status: 200,
-                response: { value: { id: 'validid', title: 'Valid post' } }
-            })
+            mock.onGet(postUrl)
+                .reply(200, JSON.stringify({ success: true, payload: { value: mediumPostJson } }))
 
-            const load = post.load()
+            await post.load()
 
-            expect(load)
-                .to.eventually
-                .includes({ isLoaded: true, title: 'Valid post' })
+            expect(post.isLoaded).to.be.true
+            expect(post.id).to.be.equal('a6a44bbd3ac6')
+            expect(post.mediumUrl).to.be.equal('https://medium.com/@qjuanp/renombrar-objetos-y-namespaces-en-c-a6a44bbd3ac6')
+            expect(post.username).to.be.equal('7367fbed8fdd')
+            expect(post.title).to.be.equal('Renombrar objetos y Namespaces en C#')
+            expect(post.subtitle).to.be.equal('Esta es una de esas herramientas “medio ocultas” (o bueno, yo por lo menos me tarde en encontrarla) en el lenguaje C# que les va quitar…')
+            expect(post.slug).to.be.equal('renombrar-objetos-y-namespaces-en-c')
+            expect(post.createdAt,'Wrong created date').to.be.at.least(new Date(1454388281379))
+            expect(post.updatedAt, 'Wrong updated date').to.be.at.least(new Date(1511053976877))
+            expect(post.body).to.have.property('paragraphs')
+            expect(post.body).to.have.property('sections')
+            expect(post.body.paragraphs).to.not.be.empty
+            expect(post.body.sections).to.not.be.empty
+            expect(post.tags).to.not.be.empty
         })
     })
-
 
     describe('Exception scenarios', () => {
 
@@ -70,12 +84,14 @@ describe('Medium Post representation', () => {
 
         it('load: Error on medium services', () => {
             const postUrl = 'https://medium.com/post',
-                post = new Post({ mediumUrl: postUrl })
+                post = new Post({ mediumUrl: postUrl }),
+                mock = new MockAdapter(axios)
 
-            moxios.stubRequest(postUrl, {
-                status: 500,
-                response: {}
-            })
+            mock.onGet(postUrl)
+                .reply(500, {
+                    success: false,
+                    message: "Internal server error"
+                })
 
             expect(post.load())
                 .to.eventually
@@ -84,15 +100,14 @@ describe('Medium Post representation', () => {
 
         it('load: post not found', () => {
             const postUrl = 'https://medium.com/post',
-                post = new Post({ mediumUrl: postUrl })
+                post = new Post({ mediumUrl: postUrl }),
+                mock = new MockAdapter(axios)
 
-            moxios.stubRequest(postUrl, {
-                status: 404,
-                response: {
-                    "success": false,
-                    "error": "Post not found"
-                }
-            })
+            mock.onGet(postUrl)
+                .reply(404, {
+                    success: false,
+                    message: "Post not found"
+                })
 
             expect(post.load())
                 .to.eventually

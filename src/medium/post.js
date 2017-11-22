@@ -28,23 +28,29 @@ export class Post {
      * Load post information
      */
     load() {
+        const currentPost = this
         return axios
             .get(this.url, {
                 transformResponse: mapMediumData
             })
             .then(({ data: { success, payload } }) => {
-                if (!success) throw `Cannot retrieve ${this.url}`
 
-                this.postJson = payload.value
-                this.isLoaded = true
+                if (!success) throw `Cannot retrieve ${currentPost.url}`
 
-                return this
+                currentPost.postJson = payload.value
+                currentPost.isLoaded = true
+
+                currentPost.id = currentPost.postJson.id
+                currentPost.username = currentPost.postJson.creatorId
+                currentPost.mediumUrl = currentPost.postJson.mediumUrl
+
+                return currentPost
             })
             .catch(({ response }) => {
 
                 // TODO: Log error
                 console.error(`Request error code=${response.status} message=${response.data.error}`)
-                return this
+                return currentPost
             })
     }
 
